@@ -9,12 +9,20 @@ import org.springframework.stereotype.Service;
 import cn.tyshan.rest.model.Profile;
 import cn.tyshan.rest.model.User;
 
+/**
+ * user service
+ *
+ */
 @Service
 public class UserService {
 
 	private static final Log log = LogFactory.getLog(UserService.class);
 	private static final AtomicInteger counter = new AtomicInteger(0);
 
+	/**
+	 * generate a user with serializable username
+	 * @return
+	 */
 	public User getUser() {
 		log.debug("get user ...");
 		int c = counter.incrementAndGet();
@@ -23,6 +31,10 @@ public class UserService {
 		return user;
 	}
 
+	/**
+	 * generate a profile
+	 * @return
+	 */
 	private static Profile getProfile() {
 		Profile profile = new Profile();
 		int order = getFieldOrder();

@@ -5,13 +5,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
+import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ * 
+ *
+ */
 @MappedSuperclass
 public class BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@XmlTransient
 	protected Long id;
+	
+	@XmlTransient
 	@Version
 	protected Integer version;
 

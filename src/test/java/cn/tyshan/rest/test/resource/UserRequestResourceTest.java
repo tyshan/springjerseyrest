@@ -63,7 +63,7 @@ public class UserRequestResourceTest {
 	public void findUserPage() throws Exception {
 
 		// act
-		ResponseEntity<Page<User>> responseEntity = getUsers(USER_URL + "?page=0&size=1&sort=firstname&direction=desc");
+		ResponseEntity<Page<User>> responseEntity = getUsers(USER_URL + "?page=0&size=1&sort=username&direction=desc");
 		// assert
 		Page<User> userPage = responseEntity.getBody();
 

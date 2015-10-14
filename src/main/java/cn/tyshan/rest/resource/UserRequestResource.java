@@ -27,6 +27,10 @@ import org.springframework.stereotype.Component;
 import cn.tyshan.rest.model.User;
 import cn.tyshan.rest.repository.UserRepository;
 
+/**
+ * User resource
+ *
+ */
 @Component
 @Path("/api/user")
 @Produces(MediaType.APPLICATION_JSON)
@@ -40,6 +44,11 @@ public class UserRequestResource {
 	@Context
 	private UriInfo uriInfo;
 
+	/**
+	 * save a user
+	 * @param user
+	 * @return
+	 */
 	@POST
 	public Response save(User user) {
 		log.debug("save user : {}", user);
@@ -50,6 +59,11 @@ public class UserRequestResource {
 		return Response.created(location).build();
 	}
 
+	/**
+	 * find a user by id
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Path("{id}")
 	public User findById(@PathParam("id") Long id) {
@@ -57,6 +71,11 @@ public class UserRequestResource {
 		return userRepository.findOne(id);
 	}
 
+	/**
+	 * delete a user by id
+	 * @param id
+	 * @return
+	 */
 	@DELETE
 	@Path("{id}")
 	public Response deleteUser(@PathParam("id") Long id) {
@@ -65,6 +84,14 @@ public class UserRequestResource {
 		return Response.accepted().build();
 	}
 
+	/**
+	 * find user by page,size
+	 * @param page
+	 * @param size
+	 * @param sort
+	 * @param direction
+	 * @return
+	 */
 	@GET
 	public Page<User> findUsers(@QueryParam("page") @DefaultValue("0") int page,
 			@QueryParam("size") @DefaultValue("10") int size,

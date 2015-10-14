@@ -9,13 +9,22 @@ import javax.ws.rs.core.Response.Status;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * message resource
+ *
+ */
 @Component
 @Path("/api/message")
+@Produces(MediaType.APPLICATION_JSON)
 public class MessageResource {
 
+	/**
+	 * say hello
+	 * 
+	 * @return
+	 */
 	@Path("hello")
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response hello() {
 		return Response.status(Status.OK).entity("Hello the world!!!").build();
 	}

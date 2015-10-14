@@ -18,7 +18,7 @@ import cn.tyshan.rest.model.Campaign;
 import cn.tyshan.rest.model.Target;
 
 /**
- *
+ * Campaign generate resource
  */
 @Component
 @Path("/campaign")
@@ -31,9 +31,9 @@ public class CampaignGenerateResource {
 	 * @param x
 	 *            attribute, attributes size in target
 	 * @param y
-	 *            less equal than 26, target size
+	 *            less equal than 26, target size in a comapaign
 	 * @param z
-	 *            less equal than 10000, campaign size
+	 *            less equal than 10000, campaign size in a list output
 	 * @return
 	 */
 	@GET
@@ -53,20 +53,35 @@ public class CampaignGenerateResource {
 		return campaigns;
 	}
 
+	/**
+	 * generate campaign name
+	 * @param z
+	 * @return
+	 */
 	private static String getZ(Integer z) {
 		return String.format("campaign%d", z);
 	}
 
-	private static Target getTarget(Integer y, Integer z) {
+	/**
+	 * generate a target with attributes
+	 * @param y
+	 * @param x
+	 * @return
+	 */
+	private static Target getTarget(Integer y, Integer x) {
 		char c = (char) (64 + y);
 		String attr = String.format("attr_%s", c);
 		Target target = new Target(attr);
-		for (int m = 0; m < z; m++) {
+		for (int m = 0; m < x; m++) {
 			target.addAttr(String.format("%c%d", c, m));
 		}
 		return target;
 	}
 
+	/**
+	 * generate a random price
+	 * @return
+	 */
 	private static BigDecimal getPrice() {
 		double d = Math.random() * 1000;
 		BigDecimal b = new BigDecimal(d);

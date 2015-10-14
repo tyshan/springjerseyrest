@@ -11,6 +11,10 @@ import cn.tyshan.rest.resource.MessageResource;
 import cn.tyshan.rest.resource.UserGenerateResource;
 import cn.tyshan.rest.resource.UserRequestResource;
 
+/**
+ * Jersey configure injection rest resource
+ *
+ */
 @Component
 public class JerseyConfig extends ResourceConfig {
 

@@ -2,14 +2,14 @@
 package cn.tyshan.rest.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "USER")
 @NamedQuery(name = "User.findByUsername", query = "from User u where u.username = ?1")
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User extends BaseEntity implements Serializable {
 
 	/**
@@ -35,7 +36,7 @@ public class User extends BaseEntity implements Serializable {
 	private String username;
 
 	@OneToOne
-	@XmlElement()
+	@XmlElement(name="profile")
 	private Profile profile;
 
 	public String getUsername() {
