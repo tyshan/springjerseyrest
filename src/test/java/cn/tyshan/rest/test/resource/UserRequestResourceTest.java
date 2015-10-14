@@ -37,7 +37,7 @@ public class UserRequestResourceTest {
 
 		User temp = responseEntity.getBody();
 
-		Assert.assertNotNull(temp.getId());
+		Assert.assertNotNull(temp.getUsername());
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class UserRequestResourceTest {
 
 		User user = responseEntity.getBody();
 		Assert.assertNotNull(user);
-		Assert.assertNotNull(user.getId());
+		Assert.assertNotNull(user.getUsername());
 	}
 
 	@Test
